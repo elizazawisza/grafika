@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hilbert</title>
+</head>
+<body>
+<h2 class="text_center">Hilbert Curve</h2>
+<section class="graphic_template2">
+    <div>
+        <svg id="hilbertSVG" width="800" height="600" style="border:1px solid #c3c3c3;">
+            Your browser does not support the canvas element.
+            <polyline id="hilbertPolyline" points=""
+                      style="fill:white;stroke:#d500f9;stroke-width:4" />
+        </svg>
+    </div>
+    <div class="parameters_input">
+        <p>
+            <label for="level">Enter level of Hilbert Curve    </label><input type="number" id="level" max="5" class="parameter_input"><br><br>
+            <label for="length">Enter length of Hilbert Curve    </label><input type="number" id="length" class="parameter_input">
+        </p>
+        <input class="submit_button" type='submit' value='RUN' onclick='runProgram()'>
+        <input class="submit_button" type='submit' value='CLEAR' onclick='clearSVG()'>
+    </div>
+</section>
+<script src="svgHilbert.js"></script>
+</body>
+</html>
+<style>
+    .parameters_input{
+        margin-left: 3rem;
+        width: 40%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .graphic_template2{
+        display: flex;
+        margin: 0 2rem;
+    }
+    .text_center{
+        text-align: center;
+    }
+    .parameter_input{
+        margin-right: 1rem;
+    }
+
+    .submit_button{
+        background-color: white;
+        border: gray 1px solid;
+        color: black;
+        padding: 10px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 8px;
+        cursor: pointer;
+    }
+    input {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        vertical-align:middle;
+        margin-left:20px
+    }
+
+    label {
+        display:inline-block;
+        float: left;
+        padding-top: 5px;
+        text-align: right;
+        width: 200px;
+    }
+</style>
