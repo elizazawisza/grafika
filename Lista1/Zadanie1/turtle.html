@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Logo Language</title>
+</head>
+<body>
+<h2 class="text_center">Turtle Graphic</h2>
+<div style="display: flex">
+    <section class="graphic_template2">
+        <canvas id="turtleGraphic" width="800" height="500" style="border:1px solid #c3c3c3;">
+            Your browser does not support the canvas element.
+        </canvas>
+    </section>
+    <section class="action_buttons">
+        <h4>
+            List of available commands:
+        </h4>
+        FORWARD <i>length</i><br>
+        BACK <i>length</i><br>
+        RIGHT <i>angle</i><br>
+        LEFT <i>angle</i><br>
+        COLOR <i>RED, GREEN, YELLOW, BLUE, ORANGE</i><br><br>
+        <div class="instructions">
+            <textarea rows="8" cols="100" id="instructionsList"></textarea>
+            <input class="submit_button" type='submit' value='RUN' onclick='runProgram()'>
+        </div>
+        <p>
+            <input class="submit_button" type='submit' value='CLEAR' onclick='clearCanvas()'>
+        </p>
+
+    </section>
+</div>
+
+<script src="turtle.js"></script>
+</body>
+</html>
+<style>
+    .submit_button{
+        background-color: white;
+        border: gray 1px solid;
+        color: black;
+        padding: 10px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 8px;
+        cursor: pointer;
+    }
+    .action_buttons{
+        margin-left: 50px;
+    }
+    .instructions{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<!--
+START
+FORWARD 50
+ANGLE 45
+FORWARD 50
+ANGLE 45
+FORWARD 50
+ANGLE 45
+FORWARD 50
+ANGLE 45
+FORWARD 50
+ANGLE 45
+FORWARD 50
+ANGLE 45
+FORWARD 50
+ANGLE 45
+FORWARD 50
+COLOR RED
+END
+-->
+
+<!---
+
+START
+FORWARD 60
+END
+
+//POLYGON
+START
+LEFT 90
+FORWARD 60
+RIGHT 90
+BACK 60
+COLOR GREEN
+END
+
+START
+RIGHT 120
+ANGLE 270
+FORWARD 120
+COLOR BLUE
+END
+
+
+START
+RIGHT 80
+ANGLE 300
+FORWARD 80
+ANGLE 60
+BACK 80
+END
+
+
+START
+RIGHT 80
+ANGLE 300
+FORWARD 80
+END
+
+
+
+
+//szeciokat
+START
+LEFT 90
+FORWARD 100
+LEFT 60
+FORWARD 100
+LEFT 60
+FORWARD 100
+LEFT 60
+FORWARD 100
+LEFT 60
+FORWARD 100
+LEFT 60
+FORWARD 100
+BACK 100
+COLOR ORANGE
+END
+START
+RIGHT 90
+FORWARD 100
+RIGHT 72
+FORWARD 100
+RIGHT 72
+FORWARD 100
+RIGHT 72
+FORWARD 100
+RIGHT 72
+FORWARD 100
+RIGHT 72
+FORWARD 100
+COLOR RED
+END
+START
+FORWARD 100
+LEFT 120
+FORWARD 100
+LEFT 120
+FORWARD 100
+LEFT 120
+FORWARD 100
+COLOR BLUE
+END
+START
+FORWARD 50
+RIGHT 90
+FORWARD 150
+RIGHT 90
+FORWARD 50
+RIGHT 90
+FORWARD 150
+BACK 150
+COLOR GREEN
+END
+
+
+
+-->
+
+
+
+
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logo Examples</title>
+</head>
+<body>
+<h2 class="text_center">Turtle Graphic with examples</h2>
+<section class="graphic_template">
+    <canvas id="turtleGraphic" width="800" height="500"
+            style="border:1px solid #c3c3c3;">
+        Your browser does not support the canvas element.
+    </canvas>
+</section>
+
+
+<script src="turtle.js"></script>
+<script>
+  commands=[
+      'START',
+      'LEFT 90',
+      'FORWARD 100',
+      'LEFT 60',
+      'FORWARD 100',
+      'LEFT 60',
+      'FORWARD 100',
+      'LEFT 60',
+      'FORWARD 100',
+      'LEFT 60',
+      'FORWARD 100',
+      'LEFT 60',
+      'FORWARD 100',
+      'BACK 100',
+      'COLOR ORANGE',
+      'END',
+      'START',
+      'RIGHT 90',
+      'FORWARD 100',
+      'RIGHT 72',
+      'FORWARD 100',
+      'RIGHT 72',
+      'FORWARD 100',
+      'RIGHT 72',
+      'FORWARD 100',
+      'RIGHT 72',
+      'FORWARD 100',
+      'RIGHT 72',
+      'FORWARD 100',
+      'COLOR RED',
+      'END',
+      'START',
+      'FORWARD 100',
+      'LEFT 120',
+      'FORWARD 100',
+      'LEFT 120',
+      'FORWARD 100',
+      'LEFT 120',
+      'FORWARD 100',
+      'COLOR BLUE',
+      'END',
+      'START',
+      'FORWARD 50',
+      'RIGHT 90',
+      'FORWARD 150',
+      'RIGHT 90',
+      'FORWARD 50',
+      'RIGHT 90',
+      'FORWARD 150',
+      'BACK 150',
+      'COLOR GREEN',
+      'END'
+  ]
+runExampleProgram(commands)
+
+</script>
+
+
+</body>
+</html>
+
+<style>
+    .graphic_template{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    .text_center{
+        text-align: center;
+    }
+    .instructions{
+        width: 70%;
+        display: flex;
+        justify-content: center;
+    }
+</style>
