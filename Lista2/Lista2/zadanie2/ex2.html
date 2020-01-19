@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hilbert Curve in WebGL</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+<h1>Hilbert Curve in WebGL</h1>
+<canvas></canvas>
+<nav>
+    <div id="controls"></div>
+    <br>
+    <label>
+        Level:
+        <input id="level" class="example_c" type="number" value="3" min="1" max="10">
+    </label>
+    <button class="example_c" id="addCurve">Add New Hilbert Curve</button>
+</nav>
+<script id="2d-vertex-shader" type="x-shader/x-vertex">
+attribute vec3 a_position;
+attribute vec4 a_color;
+varying vec4 v_color;
+
+void main() {
+    gl_Position = vec4((a_position - 0.5) * vec3(2), 1.0);
+    v_color = a_color;
+}
+
+</script>
+<script id="2d-fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec4 v_color;
+
+void main() {
+    gl_FragColor = v_color;
+}
+
+</script>
+<script src="script/HilbertCurve.js"></script>
+<script src="script/ex2.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html id="htmlId" style="overflow: hidden;">
+
+<body onload="webGlStart();">
+<div id="divCanvas">
+    <canvas id="canvasId" width="1220" height="750" style="border:0px; margin: 0px; padding: 0px;">
+        Your browser does not support the canvas element.
+    </canvas>
+</div>
+<script src="plots.js">
+</script>
+</body>
+<script id="2d-vertex-shader" type="x-shader/x-vertex">
+attribute vec3 coordinates;
+attribute vec3 color;
+attribute vec3 normal;
+varying vec3 vNormal;
+varying vec3 vColor;
+
+varying vec3 currentPosition;
+//matrices
+uniform mat4 projectionMatrix;
+uniform mat4 rotationMatrix;
+uniform mat4 identityMatrix;
+void main(void) {
+ gl_Position = projectionMatrix*rotationMatrix*identityMatrix*vec4(coordinates, 1.0);
+ gl_PointSize = 1.0;
+ vColor = color;
+ vNormal = normal;
+ currentPosition = vec3(identityMatrix * vec4(coordinates, 1.0));
+}
+
+</script>
+
+<script id="2d-fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec3 vColor;
+uniform vec3 background;
+varying vec3 currentPosition;
+varying vec3 vNormal;
+uniform vec3 lightPosition;
+uniform vec3 lightColor;
+
+uniform float ambient;
+void main(void) {
+vec3 lightDirection = normalize(lightPosition - currentPosition);
+vec3 norm = normalize(vNormal);
+float diff = max(dot(norm, lightDirection), 0.0);
+vec3 diffuse = diff * lightColor;
+vec3 ambientCol = ambient*vec3(1, 1, 1);
+vec3 result = (ambient + diffuse) *  vColor;
+gl_FragColor = vec4(result, 1);
+}
+
+</script>
+
+</html>

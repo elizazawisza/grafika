@@ -1,0 +1,89 @@
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<h2>Simple WebGL</h2>
+<canvas id="canvas"></canvas>
+<div id="shapes">
+    <br>
+    <label><b>Figure:</b>&nbsp;</label>
+        <div class="select"><select id="figureChoice">
+        <option value="POINTS">POINTS</option>
+        <option value="LINE_STRIP">LINE STRIP</option>
+        <option value="LINE_LOOP">LINE LOOP</option>
+        <option value="LINES">LINES</option>
+        <option value="TRIANGLE_STRIP">TRIANGLE STRIP</option>
+        <option value="TRIANGLE_FAN">TRIANGLE FAN </option>
+        <option value="TRIANGLES">TRIANGLES</option>
+        </select></div>
+</div><br>
+<div id="colorChange">
+    <label><b>Color:        </b>&nbsp;</label>
+        <div class="select">
+        <select id="colorChoice">
+        <option value="YELLOW">YELLOW</option>
+        <option value="BLUE">BLUE</option>
+        <option value="GREEN">GREEN</option>
+        <option value="RED">RED</option>
+        <option value="ORANGE">ORANGE</option>
+        <option value="PURPLE">PURPLE</option>
+        <option value="RANDOM">RANDOM</option>
+    </select>
+        </div>
+</div>
+<div class="button_layout">
+    <button class="example_c" id="displayUniforms">Display Active Uniforms</button>
+    <button class="example_c" id="displayAttributes">Display Active Attributes</button>
+    <button class="example_c" id="clearConsole">Clear Results</button>
+</div>
+<div id="uiContainer">
+    <div id="ui">
+        <div id="x"></div>
+        <div id="y"></div>
+        <div id="angle"></div>
+        <div id="scaleX"></div>
+        <div id="scaleY"></div>
+</div>
+<script  id="2d-vertex-shader" type="x-shader/x-vertex">
+attribute vec2 a_position;
+
+uniform vec2 u_resolution;
+uniform vec2 u_translation;
+uniform vec2 u_rotation;
+uniform vec2 u_scale;
+uniform float u_pointsize;
+
+void main() {
+  // Scale the position
+  vec2 scaledPosition = a_position * u_scale;
+
+  // Rotate the position
+  vec2 rotatedPosition = vec2(
+     scaledPosition.x * u_rotation.y + scaledPosition.y * u_rotation.x,
+     scaledPosition.y * u_rotation.y - scaledPosition.x * u_rotation.x);
+
+  // Add in the translation.
+  vec2 position = rotatedPosition + u_translation;
+
+  // convert the position from pixels to 0.0 to 1.0
+  vec2 zeroToOne = position / u_resolution;
+
+  // convert from 0->1 to 0->2
+  vec2 zeroToTwo = zeroToOne * 2.0;
+
+  // convert from 0->2 to -1->+1 (clipspace)
+  vec2 clipSpace = zeroToTwo - 1.0;
+   gl_PointSize = u_pointsize;
+  gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
+}
+</script>
+<script  id="2d-fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+
+uniform vec4 u_color;
+
+void main() {
+   gl_FragColor = u_color;
+}
+</script>
+<script src="script/webgl-lessons-ui.js"></script>
+<script src="script/webgl-utils.js"></script>
+<script src="script/ex1.js"></script>
+</div>
